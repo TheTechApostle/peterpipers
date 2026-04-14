@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peter Piper's Plumbing & Drain Cleaning | Santa Rosa, CA</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:#04111f;
+  --blue1:#0a2540;
+  --blue2:#103a6e;
+  --blue3:#1a5fa8;
+  --blue4:#2680d4;
+  --sky:#5ba8f5;
+  --accent:#f59e0b;
+  --accent2:#f97316;
+  --light:#eaf3ff;
+  --white:#ffffff;
+  --gray:#64748b;
+  --text:#0f1f35;
+  --grad-main:linear-gradient(135deg,#04111f 0%,#0a2540 40%,#103a6e 100%);
+  --grad-blue:linear-gradient(135deg,#0a2540 0%,#1a5fa8 100%);
+  --grad-sky:linear-gradient(135deg,#103a6e 0%,#2680d4 60%,#5ba8f5 100%);
+  --grad-accent:linear-gradient(135deg,#f59e0b 0%,#f97316 100%);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Lato',sans-serif;color:var(--text);background:var(--white);}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(4,17,31,0.97);backdrop-filter:blur(12px);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:70px;border-bottom:2px solid var(--blue3);}
+.logo{display:flex;align-items:center;gap:12px;}
+.logo-icon{width:44px;height:44px;background:var(--grad-accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 0 20px rgba(245,158,11,0.4);}
+.logo-text{font-family:'Oswald',sans-serif;color:var(--white);font-size:17px;line-height:1.2;}
+.logo-text span{color:var(--sky);display:block;font-size:11px;letter-spacing:2px;font-weight:400;}
+.nav-links{display:flex;gap:30px;list-style:none;}
+.nav-links a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:700;transition:color .2s;position:relative;padding-bottom:4px;}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--sky);transition:width .3s;}
+.nav-links a:hover{color:var(--sky);}
+.nav-links a:hover::after{width:100%;}
+.nav-cta{background:var(--grad-accent);color:var(--white);padding:10px 22px;border-radius:4px;font-family:'Oswald',sans-serif;font-size:14px;letter-spacing:1px;text-decoration:none;font-weight:500;box-shadow:0 4px 14px rgba(245,158,11,0.3);transition:opacity .2s;}
+.nav-cta:hover{opacity:.88;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+.hamburger span{width:25px;height:2px;background:var(--white);}
+.mobile-menu{display:none;position:fixed;top:70px;left:0;right:0;background:var(--navy);padding:20px 5%;z-index:999;border-top:1px solid rgba(255,255,255,0.08);}
+.mobile-menu.open{display:block;}
+.mobile-menu a{display:block;color:var(--white);text-decoration:none;padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.08);font-size:15px;}
+
+/* HERO SLIDER */
+#home{position:relative;height:100vh;min-height:620px;overflow:hidden;}
+.slides{position:relative;width:100%;height:100%;}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease;background-size:cover;background-position:center;}
+.slide.active{opacity:1;}
+.slide-1{background:linear-gradient(160deg,rgba(4,17,31,0.88) 0%,rgba(16,58,110,0.65) 60%,rgba(38,128,212,0.3) 100%),url('img/ppppp.png') center/cover no-repeat;}
+.slide-2{background:linear-gradient(160deg,rgba(4,17,31,0.82) 0%,rgba(10,37,64,0.7) 50%,rgba(91,168,245,0.2) 100%),url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1800&q=85') center/cover no-repeat;}
+.slide-3{background:linear-gradient(160deg,rgba(4,17,31,0.85) 0%,rgba(26,95,168,0.6) 60%,rgba(38,128,212,0.25) 100%),url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1800&q=85') center/cover no-repeat;}
+.slide-4{background:linear-gradient(160deg,rgba(4,17,31,0.8) 0%,rgba(10,37,64,0.65) 50%,rgba(91,168,245,0.25) 100%),url('https://images.unsplash.com/photo-1581244277943-fe4a9c777189?w=1800&q=85') center/cover no-repeat;}
+.slide::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 30%,rgba(38,128,212,0.18) 0%,transparent 70%);pointer-events:none;}
+.hero-content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 5%;z-index:10;}
+.hero-badge{background:rgba(38,128,212,0.25);border:1px solid rgba(91,168,245,0.5);color:var(--sky);padding:7px 20px;border-radius:20px;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:700;margin-bottom:26px;display:inline-block;backdrop-filter:blur(4px);}
+.hero-content h1{font-family:'Oswald',sans-serif;font-size:clamp(44px,7.5vw,96px);color:var(--white);line-height:.95;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:18px;text-shadow:0 4px 30px rgba(0,0,0,0.5);}
+.hero-content h1 em{background:var(--grad-sky);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:normal;display:block;}
+.hero-sub{color:rgba(255,255,255,0.8);font-size:clamp(14px,2vw,18px);font-weight:300;max-width:580px;margin:0 auto 40px;line-height:1.7;}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
+.btn-primary{background:var(--grad-accent);color:var(--white);padding:14px 34px;border-radius:4px;font-family:'Oswald',sans-serif;font-size:15px;letter-spacing:1.5px;text-decoration:none;font-weight:500;border:2px solid transparent;box-shadow:0 6px 20px rgba(245,158,11,0.35);transition:all .2s;}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(245,158,11,0.45);}
+.btn-outline{background:rgba(255,255,255,0.06);color:var(--white);padding:14px 34px;border-radius:4px;font-family:'Oswald',sans-serif;font-size:15px;letter-spacing:1.5px;text-decoration:none;font-weight:500;border:2px solid rgba(91,168,245,0.5);backdrop-filter:blur(4px);transition:all .2s;}
+.btn-outline:hover{border-color:var(--sky);background:rgba(91,168,245,0.12);}
+.slide-dots{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:10;}
+.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.35);cursor:pointer;transition:all .35s;border:none;}
+.dot.active{background:var(--sky);width:28px;border-radius:4px;}
+.slide-arrows{position:absolute;bottom:28px;right:5%;display:flex;gap:10px;z-index:10;}
+.arrow-btn{width:46px;height:46px;border-radius:4px;background:rgba(10,37,64,0.5);border:1px solid rgba(91,168,245,0.35);color:var(--white);cursor:pointer;font-size:18px;transition:all .2s;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+.arrow-btn:hover{background:var(--blue3);border-color:var(--sky);}
+.open-badge{position:absolute;top:90px;right:5%;background:rgba(16,185,129,0.12);border:1px solid rgba(52,211,153,0.4);color:#34d399;padding:8px 18px;border-radius:20px;font-size:11px;letter-spacing:1.5px;font-weight:700;z-index:10;}
+.open-badge::before{content:'●';margin-right:6px;animation:pulse 1.5s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+.scroll-hint{position:absolute;bottom:78px;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,0.45);font-size:10px;letter-spacing:3px;}
+.scroll-hint::after{content:'';width:1px;height:0;background:linear-gradient(to bottom,rgba(91,168,245,0.7),transparent);animation:sa 2s ease-in-out infinite;}
+@keyframes sa{0%{height:0;opacity:1;}100%{height:36px;opacity:0;}}
+
+/* STATS BAR */
+.stats-bar{background:var(--grad-sky);padding:0 5%;display:grid;grid-template-columns:repeat(4,1fr);}
+.stat-item{text-align:center;color:var(--white);padding:22px 10px;position:relative;}
+.stat-item:not(:last-child)::after{content:'';position:absolute;right:0;top:20%;height:60%;width:1px;background:rgba(255,255,255,0.2);}
+.stat-num{font-family:'Oswald',sans-serif;font-size:34px;font-weight:700;display:block;text-shadow:0 2px 10px rgba(0,0,0,0.2);}
+.stat-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;opacity:.85;margin-top:2px;}
+
+/* SECTIONS */
+section{padding:96px 5%;}
+.section-label{font-size:11px;letter-spacing:3.5px;text-transform:uppercase;color:var(--blue3);font-weight:700;margin-bottom:10px;}
+.section-title{font-family:'Oswald',sans-serif;font-size:clamp(30px,4vw,52px);color:var(--navy);font-weight:700;line-height:1.05;margin-bottom:18px;}
+.section-title span{background:var(--grad-sky);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.section-desc{color:var(--gray);font-size:16px;line-height:1.85;max-width:560px;}
+
+/* SERVICES */
+#services{background:var(--light);}
+.services-intro{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:22px;margin-top:50px;}
+.service-card{background:var(--white);border-radius:14px;overflow:hidden;transition:all .35s;cursor:pointer;box-shadow:0 2px 14px rgba(10,37,64,0.07);}
+.service-card:hover{transform:translateY(-6px);box-shadow:0 22px 50px rgba(10,37,64,0.16);}
+.svc-img-wrap{overflow:hidden;position:relative;height:180px;}
+.svc-img{width:100%;height:100%;object-fit:cover;transition:transform .45s;}
+.service-card:hover .svc-img{transform:scale(1.07);}
+.svc-img-wrap::after{content:'';position:absolute;bottom:0;left:0;right:0;height:50px;background:linear-gradient(to top,var(--white),transparent);}
+.svc-body{padding:22px 24px 26px;}
+.svc-icon-row{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.svc-icon{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,rgba(16,58,110,0.1),rgba(38,128,212,0.14));display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.svc-title{font-family:'Oswald',sans-serif;font-size:19px;color:var(--navy);font-weight:600;}
+.svc-desc{color:var(--gray);font-size:13.5px;line-height:1.75;}
+.svc-tag{display:inline-block;margin-top:14px;background:rgba(16,58,110,0.07);color:var(--blue3);font-size:11px;letter-spacing:1.5px;font-weight:700;padding:4px 12px;border-radius:20px;}
+.service-card.featured .svc-tag{background:rgba(245,158,11,0.1);color:var(--accent2);}
+.emergency-strip{background:var(--grad-main);padding:36px 5%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;position:relative;overflow:hidden;}
+.emergency-strip::before{content:'';position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(38,128,212,0.18),transparent 70%);}
+.emergency-text{color:var(--white);}
+.emergency-text h3{font-family:'Oswald',sans-serif;font-size:30px;font-weight:700;}
+.emergency-text p{color:rgba(255,255,255,0.6);font-size:14px;margin-top:5px;}
+.emergency-phone{font-family:'Oswald',sans-serif;font-size:38px;color:var(--accent);font-weight:700;text-decoration:none;text-shadow:0 2px 10px rgba(245,158,11,0.3);transition:color .2s;}
+.emergency-phone:hover{color:#fcd34d;}
+
+/* ABOUT */
+#about{background:var(--white);position:relative;overflow:hidden;}
+#about::before{content:'';position:absolute;top:-120px;right:-120px;width:500px;height:500px;background:radial-gradient(circle,rgba(38,128,212,0.05),transparent 65%);pointer-events:none;}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.about-images{position:relative;padding-bottom:40px;}
+.img-main{width:100%;height:440px;object-fit:cover;border-radius:14px;display:block;box-shadow:0 16px 48px rgba(10,37,64,0.18);}
+.img-secondary{position:absolute;bottom:0;right:-20px;width:52%;height:200px;object-fit:cover;border-radius:10px;border:4px solid var(--white);box-shadow:0 10px 32px rgba(10,37,64,0.22);}
+.img-badge{position:absolute;top:24px;left:-16px;background:var(--grad-sky);color:var(--white);padding:18px 22px;border-radius:10px;font-family:'Oswald',sans-serif;text-align:center;box-shadow:0 8px 24px rgba(10,37,64,0.25);z-index:2;}
+.img-badge .big{font-size:36px;font-weight:700;display:block;line-height:1;}
+.img-badge .small{font-size:10px;letter-spacing:2px;opacity:.85;}
+.about-features{margin:26px 0;display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.about-feat{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text);}
+.about-feat::before{content:'✓';width:22px;height:22px;background:var(--grad-sky);color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.gallery-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:80px;}
+.gallery-img{width:100%;height:160px;object-fit:cover;border-radius:10px;transition:transform .35s,box-shadow .35s;cursor:pointer;}
+.gallery-img:hover{transform:scale(1.04);box-shadow:0 12px 32px rgba(10,37,64,0.18);}
+
+/* REVIEWS */
+#reviews{background:var(--grad-main);padding:96px 5%;position:relative;overflow:hidden;}
+#reviews::before{content:'';position:absolute;left:-100px;bottom:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(38,128,212,0.14),transparent 65%);pointer-events:none;}
+#reviews .section-title{color:var(--white);}
+.stars{color:var(--accent);font-size:18px;margin:4px 0 10px;}
+.reviews-slider{position:relative;overflow:hidden;margin-top:50px;}
+.reviews-track{display:flex;transition:transform .55s cubic-bezier(.25,.46,.45,.94);}
+.review-card{min-width:calc(33.333% - 16px);margin-right:24px;background:rgba(255,255,255,0.05);border:1px solid rgba(91,168,245,0.18);border-radius:14px;padding:30px 26px;flex-shrink:0;backdrop-filter:blur(6px);position:relative;overflow:hidden;}
+.review-card::before{content:'"';position:absolute;top:-10px;right:20px;font-size:100px;color:rgba(91,168,245,0.1);font-family:Georgia,serif;line-height:1;}
+.review-text{color:rgba(255,255,255,0.88);font-size:15px;line-height:1.85;margin-bottom:22px;font-style:italic;position:relative;z-index:1;}
+.reviewer{display:flex;align-items:center;gap:14px;}
+.reviewer-avatar{width:46px;height:46px;border-radius:50%;background:var(--grad-sky);display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:16px;color:var(--white);font-weight:600;flex-shrink:0;}
+.reviewer-name{font-family:'Oswald',sans-serif;color:var(--white);font-size:15px;font-weight:500;}
+.reviewer-date{color:rgba(255,255,255,0.4);font-size:12px;margin-top:2px;}
+.reviews-nav{display:flex;gap:10px;margin-top:30px;}
+.rnav-btn{width:46px;height:46px;border-radius:6px;background:rgba(255,255,255,0.07);border:1px solid rgba(91,168,245,0.25);color:var(--white);cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.rnav-btn:hover{background:var(--blue3);border-color:var(--sky);}
+
+/* CONTACT */
+#contact{background:var(--light);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;margin-top:52px;}
+.contact-info-item{display:flex;gap:18px;margin-bottom:26px;align-items:flex-start;}
+.contact-icon{width:50px;height:50px;background:var(--grad-sky);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;box-shadow:0 4px 14px rgba(26,95,168,0.25);}
+.contact-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gray);font-weight:700;margin-bottom:4px;}
+.contact-value{font-family:'Oswald',sans-serif;font-size:18px;color:var(--navy);font-weight:500;}
+.contact-value a{color:var(--navy);text-decoration:none;transition:color .2s;}
+.contact-value a:hover{color:var(--blue3);}
+.map-container{border-radius:12px;overflow:hidden;height:300px;box-shadow:0 8px 28px rgba(10,37,64,0.14);border:3px solid var(--white);}
+.map-container iframe{width:100%;height:100%;border:none;}
+.contact-form{background:var(--white);border-radius:14px;padding:38px;box-shadow:0 8px 40px rgba(10,37,64,0.1);border:1px solid rgba(16,58,110,0.08);}
+.contact-form h3{font-family:'Oswald',sans-serif;font-size:26px;color:var(--navy);margin-bottom:26px;font-weight:700;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.form-group{margin-bottom:18px;}
+label{display:block;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gray);font-weight:700;margin-bottom:7px;}
+input,select,textarea{width:100%;padding:12px 16px;border:1.5px solid #dde8f5;border-radius:6px;font-family:'Lato',sans-serif;font-size:14px;color:var(--text);transition:border-color .2s,box-shadow .2s;background:var(--white);}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue3);box-shadow:0 0 0 3px rgba(26,95,168,0.1);}
+textarea{height:120px;resize:vertical;}
+.submit-btn{width:100%;background:var(--grad-sky);color:var(--white);padding:15px;border:none;border-radius:6px;font-family:'Oswald',sans-serif;font-size:16px;letter-spacing:2px;cursor:pointer;transition:opacity .2s,transform .15s;box-shadow:0 6px 20px rgba(26,95,168,0.3);}
+.submit-btn:hover{opacity:.9;transform:translateY(-1px);}
+.form-success{display:none;background:#ecfdf5;border:1px solid #86efac;color:#166534;padding:14px;border-radius:6px;text-align:center;font-size:14px;margin-top:12px;}
+
+/* FOOTER */
+footer{background:var(--navy);padding:64px 5% 28px;color:rgba(255,255,255,0.65);position:relative;overflow:hidden;}
+footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad-sky);}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:52px;margin-bottom:48px;}
+.footer-brand p{margin-top:16px;font-size:14px;line-height:1.85;color:rgba(255,255,255,0.5);}
+.footer-col h4{font-family:'Oswald',sans-serif;color:var(--white);font-size:15px;letter-spacing:1.5px;margin-bottom:18px;font-weight:500;text-transform:uppercase;}
+.footer-col a{display:block;color:rgba(255,255,255,0.5);text-decoration:none;font-size:14px;margin-bottom:9px;transition:color .2s;}
+.footer-col a:hover{color:var(--sky);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:13px;}
+.footer-bottom a{color:var(--sky);text-decoration:none;}
+.social-links{display:flex;gap:10px;margin-top:18px;}
+.social-btn{width:38px;height:38px;border-radius:8px;background:rgba(255,255,255,0.07);border:1px solid rgba(91,168,245,0.2);display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--white);text-decoration:none;transition:background .2s;}
+.social-btn:hover{background:var(--blue3);}
+
+@media(max-width:900px){
+  .about-grid,.contact-grid{grid-template-columns:1fr;}
+  .img-secondary{display:none;}
+  .gallery-strip{grid-template-columns:repeat(2,1fr);}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:680px){
+  .nav-links,.nav-cta{display:none;}
+  .hamburger{display:flex;}
+  .stats-bar{grid-template-columns:repeat(2,1fr);}
+  .form-row{grid-template-columns:1fr;}
+  .review-card{min-width:100% !important;}
+  .gallery-strip{grid-template-columns:repeat(2,1fr);}
+  .footer-grid{grid-template-columns:1fr;}
+  .services-intro{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">🔧</div>
+    <div class="logo-text">Peter Piper's Plumbing<span>Santa Rosa, CA · Licensed & Insured</span></div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:+17073180008" class="nav-cta">📞 707-318-0008</a>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" onclick="toggleMenu()">Home</a>
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#reviews" onclick="toggleMenu()">Reviews</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+  <a href="tel:+17073180008" style="color:var(--accent);font-weight:700;">📞 707-318-0008</a>
+</div>
+
+<!-- HERO -->
+<section id="home" style="padding:0;">
+  <div class="slides">
+    <div class="slide slide-1 active"></div>
+    <div class="slide slide-2"></div>
+    <div class="slide slide-3"></div>
+    <div class="slide slide-4"></div>
+  </div>
+  <div class="open-badge">● Open 24 Hours · 7 Days a Week</div>
+  <div class="hero-content">
+    <span class="hero-badge">⭐ 4.0 Google Rating · Santa Rosa, CA</span>
+    <h1>Expert Plumbing<em>Done Right.</em></h1>
+    <p class="hero-sub">Fast, affordable, and professional plumbing &amp; drain cleaning services available 24/7 — because emergencies don't wait for business hours.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Get a Free Quote</a>
+      <a href="tel:+17073180008" class="btn-outline">📞 Call 707-318-0008</a>
+    </div>
+  </div>
+  <div class="scroll-hint">SCROLL</div>
+  <div class="slide-dots" id="slideDots"></div>
+  <div class="slide-arrows">
+    <button class="arrow-btn" onclick="changeSlide(-1)">&#8592;</button>
+    <button class="arrow-btn" onclick="changeSlide(1)">&#8594;</button>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item"><span class="stat-num">24/7</span><span class="stat-label">Emergency Service</span></div>
+  <div class="stat-item"><span class="stat-num">4.0★</span><span class="stat-label">Google Rating</span></div>
+  <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">Licensed & Insured</span></div>
+  <div class="stat-item"><span class="stat-num">Fast</span><span class="stat-label">Response Time</span></div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-intro">
+    <div>
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Complete Plumbing <span>Solutions</span></h2>
+    </div>
+    <p class="section-desc" style="max-width:420px;">From burst pipe emergencies to routine drain cleaning — our certified plumbers handle every job with speed and precision.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card featured">
+      <div class="svc-img-wrap">
+        <img class="svc-img" src="https://images.unsplash.com/photo-1605152276897-4f618f831968?w=600&q=80" alt="Emergency plumbing service">
+      </div>
+      <div class="svc-body">
+        <div class="svc-icon-row"><div class="svc-icon">🚨</div><div class="svc-title">Emergency Services</div></div>
+        <p class="svc-desc">24/7 rapid response for burst pipes, backed-up sewer lines, and severe leaks. We arrive fast, any time, any day.</p>
+        <span class="svc-tag">AVAILABLE NOW</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="svc-img-wrap">
+        <img class="svc-img" src="img/pd.png" alt="Drain cleaning service">
+      </div>
+      <div class="svc-body">
+        <div class="svc-icon-row"><div class="svc-icon">🚿</div><div class="svc-title">Drain Cleaning</div></div>
+        <p class="svc-desc">Professional hydro-jetting and snake services to clear stubborn clogs and restore full flow to drains and sewer lines.</p>
+        <span class="svc-tag">MOST POPULAR</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="svc-img-wrap">
+        <img class="svc-img" src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=80" alt="Pipe repair and replacement">
+      </div>
+      <div class="svc-body">
+        <div class="svc-icon-row"><div class="svc-icon">🔩</div><div class="svc-title">Pipe Repair & Replacement</div></div>
+        <p class="svc-desc">Expert leak detection and pipe repair — including wall access, restoration, and full repipe services when needed.</p>
+        <span class="svc-tag">RESIDENTIAL & COMMERCIAL</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="svc-img-wrap">
+        <img class="svc-img" src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=600&q=80" alt="Faucet and fixture installation">
+      </div>
+      <div class="svc-body">
+        <div class="svc-icon-row"><div class="svc-icon">🚰</div><div class="svc-title">Faucet & Fixture Install</div></div>
+        <p class="svc-desc">Precision installation of faucets, sinks, toilets, and showerheads — clean, professional, leak-free finishes every time.</p>
+        <span class="svc-tag">SAME-DAY AVAILABLE</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="svc-img-wrap">
+        <img class="svc-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Water heater service">
+      </div>
+      <div class="svc-body">
+        <div class="svc-icon-row"><div class="svc-icon">♨️</div><div class="svc-title">Water Heater Services</div></div>
+        <p class="svc-desc">Repair, maintenance, and replacement of traditional and tankless water heaters — keeping your hot water flowing year-round.</p>
+        <span class="svc-tag">TANKLESS SPECIALISTS</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="svc-img-wrap">
+        <img class="svc-img" src="https://images.unsplash.com/photo-1581244277943-fe4a9c777189?w=600&q=80" alt="Sewer line service">
+      </div>
+      <div class="svc-body">
+        <div class="svc-icon-row"><div class="svc-icon">🏠</div><div class="svc-title">Sewer Line Services</div></div>
+        <p class="svc-desc">Camera inspection, root removal, and full sewer line repair or replacement. We tackle the toughest underground issues.</p>
+        <span class="svc-tag">CAMERA INSPECTION</span>
+      </div>
+    </div>
+  </div>
+  <div class="emergency-strip">
+    <div class="emergency-text">
+      <h3>🚨 Plumbing Emergency? We're Ready Now.</h3>
+      <p>Our team responds fast — day or night, weekdays or weekends. No extra charges for after-hours.</p>
+    </div>
+    <a href="tel:+17073180008" class="emergency-phone">📞 707-318-0008</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-images">
+      <div class="img-badge">
+        <span class="big">⭐ 4.0</span>
+        <span class="small">GOOGLE REVIEWS</span>
+      </div>
+      <img src="img/ppp.png" alt="Peter Piper's plumber at work" class="img-main">
+      <img src="img/pppp.png" alt="Plumbing tools and equipment" class="img-secondary">
+    </div>
+    <div>
+      <div class="section-label">About Us</div>
+      <h2 class="section-title">Santa Rosa's <span>Trusted</span> Plumbers</h2>
+      <p style="color:var(--gray);font-size:15px;line-height:1.9;margin-bottom:18px;">Peter Piper's Plumbing and Drain Cleaning Service is your local, dependable plumbing team proudly serving Santa Rosa and all of Sonoma County. We bring professional expertise, honest pricing, and genuine care to every job — big or small.</p>
+      <p style="color:var(--gray);font-size:15px;line-height:1.9;margin-bottom:26px;">Whether it's a midnight emergency or a scheduled installation, our crew shows up on time, fully equipped, and ready to solve your plumbing problems right the first time.</p>
+      <div class="about-features">
+        <div class="about-feat">Licensed &amp; Insured</div>
+        <div class="about-feat">Free Estimates</div>
+        <div class="about-feat">24/7 Availability</div>
+        <div class="about-feat">Upfront Pricing</div>
+        <div class="about-feat">Emergency Response</div>
+        <div class="about-feat">Local &amp; Family-Owned</div>
+      </div>
+      <a href="#contact" class="btn-primary" style="display:inline-block;margin-top:10px;">Book a Service Call</a>
+    </div>
+  </div>
+  <!-- Gallery -->
+  <div class="gallery-strip">
+    <img class="gallery-img" src="img/p.png" alt="Plumber working under sink">
+    <img class="gallery-img" src="img/pp.png" alt="Professional pipe work">
+    <img class="gallery-img" src="img/pppp.png" alt="Drain cleaning tools">
+    <img class="gallery-img" src="img/ppppp.png" alt="Kitchen plumbing repair">
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" style="padding:96px 5%;">
+  <div class="section-label" style="color:var(--sky);">Customer Reviews</div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;">
+    <div>
+      <h2 class="section-title" style="color:var(--white);margin-bottom:6px;">What Our Customers <span>Say</span></h2>
+      <div class="stars">★★★★☆ <span style="color:rgba(255,255,255,0.5);font-size:13px;margin-left:8px;font-weight:300;">4.0 · 27 Reviews on Google</span></div>
+    
+  <div class="reviews-slider">
+    <div class="reviews-track" id="reviewsTrack">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"We have hired Peter Piper Plumbing twice now for our home, and they have taken excellent care of us. Once was an emergency with a backed-up sewer line, and they came out immediately and fixed the problem. Highly recommended!"</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">ES</div>
+          <div><div class="reviewer-name">E Studio Personal Training</div><div class="reviewer-date">4 months ago · 7 reviews</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Installed a drain and faucet and everything worked perfectly! So thankful for the professional and courteous service — we would highly recommend for anyone to use!"</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">T</div>
+          <div><div class="reviewer-name">Tinadow1</div><div class="reviewer-date">1 month ago</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"We had a late night leak in the wall — a real emergency. The owner responded quickly, opened up the wall, and made the repair. They did a great job and the price was right. Highly recommended!"</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">GD</div>
+          <div><div class="reviewer-name">George Daly</div><div class="reviewer-date">5 months ago</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Called Peter Piper after a plumbing disaster in our kitchen. They arrived within the hour, diagnosed the issue fast, and had everything fixed before dinner. Could not be more impressed with the professionalism."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">MR</div>
+          <div><div class="reviewer-name">Maria R.</div><div class="reviewer-date">2 months ago</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-top:30px;">
+    <div class="reviews-nav">
+      <button class="rnav-btn" onclick="scrollReviews(-1)">&#8592;</button>
+      <button class="rnav-btn" onclick="scrollReviews(1)">&#8594;</button>
+    </div>
+    <a href="https://www.google.com/maps/place/Peter+Piper%27s+Plumbing" target="_blank" style="color:rgba(255,255,255,0.5);font-size:13px;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#5ba8f5'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Leave us a Google review →</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div style="text-align:center;max-width:600px;margin:0 auto;">
+    <div class="section-label">Get In Touch</div>
+    <h2 class="section-title">Request a <span>Service Call</span></h2>
+    <p class="section-desc" style="margin:0 auto;">Fill out the form or call us directly — we respond fast, 24 hours a day.</p>
+  </div>
+  <div class="contact-grid">
+    <div>
+      <div class="contact-info-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-label">Location</div>
+          <div class="contact-value">Santa Rosa, CA 95404<br><small style="font-size:13px;color:var(--gray);font-family:'Lato',sans-serif;font-weight:400;">Serving all of Sonoma County</small></div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-icon">📞</div>
+        <div>
+          <div class="contact-label">Phone</div>
+          <div class="contact-value"><a href="tel:+17073180008">+1 707-318-0008</a></div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-icon">🌐</div>
+        <div>
+          <div class="contact-label">Website</div>
+          <div class="contact-value"><a href="http://peterpipersplumbing.com" target="_blank">peterpipersplumbing.com</a></div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-icon">🕐</div>
+        <div>
+          <div class="contact-label">Hours</div>
+          <div class="contact-value" style="color:#059669;">Open 24 Hours · 7 Days a Week</div>
+        </div>
+      </div>
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3129.06!2d-122.9899756!3d38.3340091!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80844f7000000001%3A0x9f6c80ec946af94!2sPeter%20Piper&#39;s%20Plumbing%20and%20Drain%20Cleaning%20Service!5e0!3m2!1sen!2sus!4v1681000000000!5m2!1sen!2sus" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Peter Piper's Plumbing Location"></iframe>
+      </div>
+      <a href="https://maps.app.goo.gl/bqng7RPkDmp7TMRQ6" target="_blank" class="btn-primary" style="display:inline-block;margin-top:16px;font-size:13px;padding:12px 24px;">📍 Get Directions on Google Maps</a>
+    </div>
+    <div class="contact-form">
+      <h3>Request a Free Estimate</h3>
+      <div class="form-row">
+        <div class="form-group"><label>First Name</label><input type="text" placeholder="John"></div>
+        <div class="form-group"><label>Last Name</label><input type="text" placeholder="Doe"></div>
+      </div>
+      <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+1 (707) 000-0000"></div>
+      <div class="form-group"><label>Email Address</label><input type="email" placeholder="you@email.com"></div>
+      <div class="form-group">
+        <label>Service Needed</label>
+        <select>
+          <option value="">Select a service...</option>
+          <option>Emergency Plumbing</option>
+          <option>Drain Cleaning</option>
+          <option>Pipe Repair / Replacement</option>
+          <option>Faucet / Fixture Installation</option>
+          <option>Water Heater Service</option>
+          <option>Sewer Line Service</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Message</label><textarea placeholder="Briefly describe your issue or what you need..."></textarea></div>
+      <button class="submit-btn" onclick="submitForm()">SEND REQUEST →</button>
+      <div class="form-success" id="formSuccess">✅ Thanks! We'll be in touch shortly. For urgent needs, call 707-318-0008.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">
+        <div class="logo-icon" style="width:38px;height:38px;font-size:18px;">🔧</div>
+        <div class="logo-text">Peter Piper's Plumbing<span>& Drain Cleaning Service</span></div>
+      </div>
+      <p>Professional plumbing and drain cleaning services for residential and commercial clients throughout Santa Rosa and Sonoma County. Available 24/7 for emergencies.</p>
+      <div class="social-links">
+        <a class="social-btn" href="http://peterpipersplumbing.com" target="_blank" title="Website">🌐</a>
+        <a class="social-btn" href="https://www.google.com/maps/place/Peter+Piper%27s+Plumbing" target="_blank" title="Google Maps">📍</a>
+        <a class="social-btn" href="tel:+17073180008" title="Call us">📞</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#about">About Us</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Our Services</h4>
+      <a href="#services">Emergency Plumbing</a>
+      <a href="#services">Drain Cleaning</a>
+      <a href="#services">Pipe Repair</a>
+      <a href="#services">Fixture Installation</a>
+      <a href="#services">Water Heater</a>
+      <a href="#services">Sewer Lines</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Peter Piper's Plumbing & Drain Cleaning Service. All rights reserved.</span>
+    <span>Santa Rosa, CA 95404 · <a href="tel:+17073180008">707-318-0008</a> · <a href="http://peterpipersplumbing.com" target="_blank">peterpipersplumbing.com</a></span>
+  </div>
+</footer>
+
+<script>
+// Hero Slider
+let current=0;
+const slides=document.querySelectorAll('.slide');
+const dotsC=document.getElementById('slideDots');
+slides.forEach((_,i)=>{
+  const d=document.createElement('button');
+  d.className='dot'+(i===0?' active':'');
+  d.setAttribute('aria-label','Slide '+(i+1));
+  d.onclick=()=>goSlide(i);
+  dotsC.appendChild(d);
+});
+function goSlide(n){
+  slides[current].classList.remove('active');
+  document.querySelectorAll('.dot')[current].classList.remove('active');
+  current=(n+slides.length)%slides.length;
+  slides[current].classList.add('active');
+  document.querySelectorAll('.dot')[current].classList.add('active');
+}
+function changeSlide(d){goSlide(current+d);}
+setInterval(()=>changeSlide(1),5500);
+
+// Reviews Slider
+let ri=0;
+const track=document.getElementById('reviewsTrack');
+const rcards=track.querySelectorAll('.review-card');
+function scrollReviews(d){
+  const pv=window.innerWidth<680?1:3;
+  const max=Math.max(0,rcards.length-pv);
+  ri=Math.max(0,Math.min(max,ri+d));
+  track.style.transform='translateX(-'+(ri*(rcards[0].offsetWidth+24))+'px)';
+}
+
+// Mobile Menu
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
+
+// Nav scroll highlight + darken
+const secs=['home','services','about','reviews','contact'];
+window.addEventListener('scroll',()=>{
+  const sy=window.scrollY+80;
+  secs.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el&&sy>=el.offsetTop&&sy<el.offsetTop+el.offsetHeight){
+      document.querySelectorAll('.nav-links a').forEach(a=>{
+        a.style.color=a.getAttribute('href')==='#'+id?'#5ba8f5':'rgba(255,255,255,0.8)';
+      });
+    }
+  });
+  document.querySelector('nav').style.borderBottomColor=window.scrollY>50?'#2680d4':'#1a5fa8';
+});
+
+// Form
+function submitForm(){
+  const s=document.getElementById('formSuccess');
+  s.style.display='block';
+  setTimeout(()=>s.style.display='none',6000);
+}
+</script>
+</body>
+</html>
